@@ -13,9 +13,9 @@ Link: https://patch.msgid.link/20260312213019.13965-3-heiko@sntech.de
  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 46 +++++++++++++++++++++++++++
  1 file changed, 46 insertions(+)
 
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -1134,6 +1134,52 @@
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -1052,6 +1052,52 @@
  		status = "disabled";
  	};
  

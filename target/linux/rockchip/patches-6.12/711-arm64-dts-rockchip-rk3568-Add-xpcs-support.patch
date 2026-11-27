@@ -10,9 +10,9 @@ Signed-off-by: David Wu <david.wu@rock-chips.com>
  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 32 +++++++++++++++++++++---
  2 files changed, 29 insertions(+), 4 deletions(-)
 
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -269,6 +269,13 @@
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -188,6 +188,13 @@
  		arm,no-tick-in-suspend;
  	};
  
@@ -26,7 +26,7 @@ Signed-off-by: David Wu <david.wu@rock-chips.com>
  	xin24m: xin24m {
  		compatible = "fixed-clock";
  		clock-frequency = <24000000>;
-@@ -428,6 +435,12 @@
+@@ -347,6 +354,12 @@
  		status = "disabled";
  	};
  
@@ -39,7 +39,7 @@ Signed-off-by: David Wu <david.wu@rock-chips.com>
  	pmugrf: syscon@fdc20000 {
  		compatible = "rockchip,rk3568-pmugrf", "syscon", "simple-mfd";
  		reg = <0x0 0xfdc20000 0x0 0x10000>;
-@@ -727,11 +740,13 @@
+@@ -645,11 +658,13 @@
  		clocks = <&cru SCLK_GMAC1>, <&cru SCLK_GMAC1_RX_TX>,
  			 <&cru SCLK_GMAC1_RX_TX>, <&cru CLK_MAC1_REFOUT>,
  			 <&cru ACLK_GMAC1>, <&cru PCLK_GMAC1>,
@@ -57,9 +57,9 @@ Signed-off-by: David Wu <david.wu@rock-chips.com>
  		rockchip,grf = <&grf>;
 --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -8,6 +8,13 @@
- / {
- 	compatible = "rockchip,rk3568";
+@@ -96,6 +96,13 @@
+ 		};
+ 	};
  
 +	gmac0_xpcsclk: xpcs-gmac0-clock {
 +		compatible = "fixed-clock";
@@ -71,7 +71,7 @@ Signed-off-by: David Wu <david.wu@rock-chips.com>
  	sata0: sata@fc000000 {
  		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
  		reg = <0 0xfc000000 0 0x1000>;
-@@ -175,11 +182,13 @@
+@@ -263,11 +270,13 @@
  		clocks = <&cru SCLK_GMAC0>, <&cru SCLK_GMAC0_RX_TX>,
  			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_MAC0_REFOUT>,
  			 <&cru ACLK_GMAC0>, <&cru PCLK_GMAC0>,

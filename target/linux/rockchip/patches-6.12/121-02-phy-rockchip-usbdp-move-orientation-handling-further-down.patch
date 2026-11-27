@@ -31,8 +31,8 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -651,56 +651,6 @@ static void rk_udphy_set_typec_default_m
- 	udphy->mode = UDPHY_MODE_DP_USB;
+@@ -628,56 +628,6 @@ static void rk_udphy_set_typec_default_m
+ 	udphy->dp_lanes = 2;
  }
  
 -static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
@@ -88,7 +88,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  static int rk_udphy_refclk_set(struct rk_udphy *udphy)
  {
  	unsigned long rate;
-@@ -1451,6 +1401,56 @@ static struct phy *rk_udphy_phy_xlate(st
+@@ -1403,6 +1353,56 @@ static struct phy *rk_udphy_phy_xlate(st
  	return ERR_PTR(-EINVAL);
  }
  

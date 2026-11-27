@@ -9,10 +9,10 @@ Signed-off-by: Liang Chen <cl@rock-chips.com>
  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 13 +++++++++++++
  1 file changed, 13 insertions(+)
 
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -170,6 +170,12 @@
- 		};
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -124,6 +124,12 @@
+ 		cache-sets = <512>;
  	};
  
 +	cpuinfo {

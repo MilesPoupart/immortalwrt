@@ -53,7 +53,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -200,6 +200,10 @@ struct rk_udphy {
+@@ -197,6 +197,10 @@ struct rk_udphy {
  	/* PHY devices */
  	struct phy *phy_dp;
  	struct phy *phy_u3;
@@ -64,7 +64,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  };
  
  static const struct rk_udphy_dp_tx_drv_ctrl rk3588_dp_tx_drv_ctrl_rbr_hbr[4][4] = {
-@@ -1255,6 +1259,9 @@ static int rk_udphy_usb3_phy_init(struct
+@@ -1206,6 +1210,9 @@ static int rk_udphy_usb3_phy_init(struct
  	struct rk_udphy *udphy = phy_get_drvdata(phy);
  	int ret = 0;
  
@@ -74,7 +74,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  	mutex_lock(&udphy->mutex);
  	/* DP only or high-speed, disable U3 port */
  	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-@@ -1273,6 +1280,9 @@ static int rk_udphy_usb3_phy_exit(struct
+@@ -1224,6 +1231,9 @@ static int rk_udphy_usb3_phy_exit(struct
  {
  	struct rk_udphy *udphy = phy_get_drvdata(phy);
  
@@ -84,7 +84,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  	mutex_lock(&udphy->mutex);
  	/* DP only or high-speed */
  	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
-@@ -1401,10 +1411,31 @@ static struct phy *rk_udphy_phy_xlate(st
+@@ -1353,10 +1363,31 @@ static struct phy *rk_udphy_phy_xlate(st
  	return ERR_PTR(-EINVAL);
  }
  
@@ -116,7 +116,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  
  	mutex_lock(&udphy->mutex);
  
-@@ -1420,6 +1451,18 @@ static int rk_udphy_orien_sw_set(struct
+@@ -1372,6 +1403,18 @@ static int rk_udphy_orien_sw_set(struct
  	rk_udphy_set_typec_default_mapping(udphy);
  	rk_udphy_usb_bvalid_enable(udphy, true);
  
@@ -135,7 +135,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  unlock_ret:
  	mutex_unlock(&udphy->mutex);
  	return 0;
-@@ -1430,12 +1473,22 @@ static void rk_udphy_orien_switch_unregi
+@@ -1382,12 +1425,22 @@ static void rk_udphy_orien_switch_unregi
  	struct rk_udphy *udphy = data;
  
  	typec_switch_unregister(udphy->sw);
@@ -158,7 +158,7 @@ Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
  	sw_desc.drvdata = udphy;
  	sw_desc.fwnode = dev_fwnode(udphy->dev);
  	sw_desc.set = rk_udphy_orien_sw_set;
-@@ -1499,6 +1552,7 @@ static int rk_udphy_probe(struct platfor
+@@ -1447,6 +1500,7 @@ static int rk_udphy_probe(struct platfor
  		return ret;
  
  	mutex_init(&udphy->mutex);
