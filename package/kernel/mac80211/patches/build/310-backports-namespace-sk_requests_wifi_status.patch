@@ -1,0 +1,17 @@
+Subject: [PATCH] backports: namespace sk_requests_wifi_status
+
+Linux 6.12.119 already provides sk_requests_wifi_status(), but the
+backport is enabled for all kernels older than 6.16. Give the backport
+its own name to avoid redefining the kernel helper while retaining
+support for older kernels that do not provide it.
+
+--- a/backport-include/net/sock.h
++++ b/backport-include/net/sock.h
+@@ -24,6 +24,7 @@ static inline void backport_sk_error_report(struct sock *sk)
+ #endif /* <= 5.14 */
+ 
+ #if LINUX_VERSION_IS_LESS(6,16,0)
++#define sk_requests_wifi_status LINUX_BACKPORT(sk_requests_wifi_status)
+ static inline bool
+ sk_requests_wifi_status(struct sock *sk)
+ {
